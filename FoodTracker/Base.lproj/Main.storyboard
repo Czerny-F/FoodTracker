@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +21,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="CoL-k6-iZ1">
-                                <rect key="frame" x="16" y="40" width="343" height="96.5"/>
+                                <rect key="frame" x="16" y="40" width="343" height="424.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1O-tF-uXy">
                                         <rect key="frame" x="0.0" y="0.0" width="83.5" height="20.5"/>
@@ -41,6 +42,16 @@
                                             <action selector="setDefaultLabelText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KGY-SR-q9b"/>
                                         </connections>
                                     </button>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="dS0-rc-itq">
+                                        <rect key="frame" x="0.0" y="104.5" width="320" height="320"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="dS0-rc-itq" secondAttribute="height" multiplier="1:1" id="lLr-AO-HrU"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="CaJ-R7-Lxo" appends="YES" id="e6D-zy-y2Z"/>
+                                        </connections>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="5kv-L8-053" secondAttribute="trailing" id="Ixw-gP-9p5"/>
@@ -58,11 +69,20 @@
                     <connections>
                         <outlet property="mealNameLabel" destination="h1O-tF-uXy" id="Ohc-LU-Qwe"/>
                         <outlet property="nameTextField" destination="5kv-L8-053" id="4rS-qg-gtv"/>
+                        <outlet property="photoImageView" destination="dS0-rc-itq" id="ml8-cg-fzB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="CaJ-R7-Lxo">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="MWN-7b-k1h"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="140" y="133.5832083958021"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultPhoto" width="540" height="540"/>
+    </resources>
 </document>
